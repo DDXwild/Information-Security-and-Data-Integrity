@@ -1,0 +1,15 @@
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\bin\Debug\net10.0\Gammacipher Task6.exe
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\bin\Debug\net10.0\Gammacipher Task6.deps.json
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\bin\Debug\net10.0\Gammacipher Task6.runtimeconfig.json
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\bin\Debug\net10.0\Gammacipher Task6.dll
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\bin\Debug\net10.0\Gammacipher Task6.pdb
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\obj\Debug\net10.0\Gammacipher Task6.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\obj\Debug\net10.0\Gammacipher Task6.AssemblyInfoInputs.cache
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\obj\Debug\net10.0\Gammacipher Task6.AssemblyInfo.cs
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\obj\Debug\net10.0\Gammacipher Task6.csproj.CoreCompileInputs.cache
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\obj\Debug\net10.0\Gammacipher Task6.sourcelink.json
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\obj\Debug\net10.0\Gammacipher Task6.dll
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\obj\Debug\net10.0\refint\Gammacipher Task6.dll
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\obj\Debug\net10.0\Gammacipher Task6.pdb
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\obj\Debug\net10.0\Gammacipher Task6.genruntimeconfig.cache
+D:\Work\Інформаційна безпека та цілісність даних\Lab03\Gammacipher Task6\Gammacipher Task6\obj\Debug\net10.0\ref\Gammacipher Task6.dll
