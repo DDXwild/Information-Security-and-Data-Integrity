@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="LSB/LSB.csproj" />
+  <Project Path="Md5Auth/Md5Auth.csproj" />
+  <Project Path="RSA/RSA.csproj" />
+</Solution>
