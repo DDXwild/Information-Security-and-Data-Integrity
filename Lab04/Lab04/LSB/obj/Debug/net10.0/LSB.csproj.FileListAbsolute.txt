@@ -1,0 +1,15 @@
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\bin\Debug\net10.0\LSB.exe
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\bin\Debug\net10.0\LSB.deps.json
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\bin\Debug\net10.0\LSB.runtimeconfig.json
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\bin\Debug\net10.0\LSB.dll
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\bin\Debug\net10.0\LSB.pdb
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\obj\Debug\net10.0\LSB.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\obj\Debug\net10.0\LSB.AssemblyInfoInputs.cache
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\obj\Debug\net10.0\LSB.AssemblyInfo.cs
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\obj\Debug\net10.0\LSB.csproj.CoreCompileInputs.cache
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\obj\Debug\net10.0\LSB.sourcelink.json
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\obj\Debug\net10.0\LSB.dll
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\obj\Debug\net10.0\refint\LSB.dll
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\obj\Debug\net10.0\LSB.pdb
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\obj\Debug\net10.0\LSB.genruntimeconfig.cache
+D:\Work\Інформаційна безпека та цілісність даних\Lab04\Lab04\LSB\obj\Debug\net10.0\ref\LSB.dll

@@ -65,9 +65,12 @@ namespace LSBWatermark
 
             BitConverter.GetBytes(fileSize).CopyTo(outData, 2);
 
+            int rawHeight = BitConverter.ToInt32(_dibHeader, 8);
+            bool topDown = rawHeight < 0;
+
             for (int y = 0; y < Height; y++)
             {
-                int dstY = Height - 1 - y;
+                int dstY = topDown ? y : (Height - 1 - y);
                 int rowStart = pixelOffset + dstY * rowSize;
                 for (int x = 0; x < Width; x++)
                 {
@@ -109,42 +112,49 @@ namespace LSBWatermark
         }
 
         static string ExtractMessage(Bitmap24 bmp)
-        {
-            int length = 0;
-            int bitIndex = 0;
-            for (int y = 0; y < bmp.Height && bitIndex < 32; y++)
-                for (int x = 0; x < bmp.Width && bitIndex < 32; x++)
-                    for (int c = 0; c < 3 && bitIndex < 32; c++)
-                    {
-                        length = (length << 1) | (bmp.Pixels[y, x, c] & 1);
-                        bitIndex++;
-                    }
+{
+    byte[] lengthBytes = new byte[4];
+    int bitIndex = 0;
 
-            if (length <= 0 || length > bmp.Height * bmp.Width * 3 / 8)
-                throw new Exception("No valid watermark found or image is corrupted.");
+    for (int y = 0; y < bmp.Height && bitIndex < 32; y++)
+        for (int x = 0; x < bmp.Width && bitIndex < 32; x++)
+            for (int c = 0; c < 3 && bitIndex < 32; c++)
+            {
+                int bytePos = bitIndex / 8;
+                int bitPos  = 7 - (bitIndex % 8);
+                int bit = bmp.Pixels[y, x, c] & 1;
+                lengthBytes[bytePos] |= (byte)(bit << bitPos);
+                bitIndex++;
+            }
 
-            byte[] msgBytes = new byte[length];
-            int msgBit = 0;
-            bool pastHeader = false;
-            int headerBits = 32;
-            int totalBits = headerBits + length * 8;
-            bitIndex = 0;
+    int length = BitConverter.ToInt32(lengthBytes, 0);
 
-            for (int y = 0; y < bmp.Height && bitIndex < totalBits; y++)
-                for (int x = 0; x < bmp.Width && bitIndex < totalBits; x++)
-                    for (int c = 0; c < 3 && bitIndex < totalBits; c++)
-                    {
-                        if (bitIndex >= headerBits)
-                        {
-                            int bytePos = msgBit / 8;
-                            msgBytes[bytePos] = (byte)((msgBytes[bytePos] << 1) | (bmp.Pixels[y, x, c] & 1));
-                            msgBit++;
-                        }
-                        bitIndex++;
-                    }
+    if (length <= 0 || length > bmp.Height * bmp.Width * 3 / 8 - 4)
+        throw new Exception("No valid watermark found or image is corrupted.");
 
-            return Encoding.UTF8.GetString(msgBytes);
-        }
+    byte[] msgBytes = new byte[length];
+    int msgBit = 0;
+    int headerBits = 32;
+    int totalBits  = headerBits + length * 8;
+    bitIndex = 0;
+
+    for (int y = 0; y < bmp.Height && bitIndex < totalBits; y++)
+        for (int x = 0; x < bmp.Width && bitIndex < totalBits; x++)
+            for (int c = 0; c < 3 && bitIndex < totalBits; c++)
+            {
+                if (bitIndex >= headerBits)
+                {
+                    int bytePos = msgBit / 8;
+                    int bitPos  = 7 - (msgBit % 8);
+                    int bit = bmp.Pixels[y, x, c] & 1;
+                    msgBytes[bytePos] |= (byte)(bit << bitPos);
+                    msgBit++;
+                }
+                bitIndex++;
+            }
+
+    return Encoding.UTF8.GetString(msgBytes);
+}
 
         static Bitmap24 CreateTestBMP(int width, int height, string savePath)
         {
@@ -204,6 +214,12 @@ namespace LSBWatermark
             Console.Write("Enter watermark message : ");
             string message = Console.ReadLine() ?? "watermark";
 
+            bool[,,] originalLSBs = new bool[bmp.Height, bmp.Width, 3];
+            for (int y = 0; y < bmp.Height; y++)
+                for (int x = 0; x < bmp.Width; x++)
+                    for (int c = 0; c < 3; c++)
+                        originalLSBs[y, x, c] = (bmp.Pixels[y, x, c] & 1) == 1;
+
             EmbedMessage(bmp, message);
             bmp.Save(dstPath);
             Console.WriteLine($"Watermarked image saved : {dstPath}");
@@ -217,7 +233,7 @@ namespace LSBWatermark
             for (int y = 0; y < bmp.Height; y++)
                 for (int x = 0; x < bmp.Width; x++)
                     for (int c = 0; c < 3; c++)
-                        if ((bmp.Pixels[y, x, c] & 1) != (wm.Pixels[y, x, c] & 1))
+                        if (originalLSBs[y, x, c] != ((wm.Pixels[y, x, c] & 1) == 1))
                             changed++;
 
             Console.WriteLine($"Pixels modified (LSB)   : {changed} of {bmp.Width * bmp.Height * 3} channels");
